@@ -18,6 +18,7 @@ import { settingsSchemaFor } from './schemas/settings-by-protocol.js';
 export type PerTag = string | Record<string, string>;
 export interface Fixture {
     tags: string[];
+    lines: Record<string, string>;
     refs: Record<string, string>;
     customUnmarshalers: string[];
     dispatch: Record<'inbound' | 'outbound', Record<string, PerTag>>;

@@ -1,0 +1,38 @@
+{
+  "inbounds": [
+    { "tag": "socks-in", "listen": "127.0.0.1", "port": 10808, "protocol": "socks", "settings": { "udp": true } }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "proxy.example.com",
+            "port": 443,
+            "users": [{ "id": "324bacb0-7a89-43ca-aa05-998d8a3b99d0", "flow": "xtls-rprx-vision", "encryption": "none" }]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "tls",
+        "tlsSettings": { "serverName": "proxy.example.com", "fingerprint": "chrome", "alpn": ["h2"] },
+        "xhttpSettings": { "path": "/example", "mode": "auto" }
+      },
+      "mux": { "enabled": false }
+    },
+    { "tag": "direct", "protocol": "freedom" }
+  ],
+  "dns": {
+    "servers": ["127.0.0.53", { "address": "https://dns.example.com/dns-query", "domains": ["domain:example.com"] }],
+    "queryStrategy": "UseIPv4"
+  },
+  "routing": {
+    "balancers": [
+      { "tag": "auto", "selector": ["proxy"], "strategy": { "type": "leastPing" } }
+    ],
+    "rules": [{ "network": "tcp,udp", "balancerTag": "auto" }]
+  }
+}

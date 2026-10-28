@@ -1,0 +1,26 @@
+// Wrong on purpose: each comment says what lint() must report.
+{
+  "inbounds": [
+    {
+      "protocol": "vless",
+      "port": 443,
+      "settings": {
+        // flow is a string in the core; a number fails the decode.
+        "clients": [{ "id": "b9a92990-567a-432b-b2e1-b4d5be33ca9c", "flow": 1 }],
+        "decryption": "none"
+      },
+      // A typo: no release reads it, so the core silently ignores it.
+      "sniffing": { "enabled": true, "destOverrid": ["tls"] }
+    }
+  ],
+  "routing": {
+    "rules": [
+      // A webhook is an object; a bare string fails the whole config.
+      { "outboundTag": "direct", "webhook": "https://hooks.example.com/x" }
+    ],
+    "balancers": [
+      // maxRTT is a Go duration string; a number is refused.
+      { "tag": "b", "selector": ["p"], "strategy": { "type": "leastLoad", "settings": { "maxRTT": 1000 } } }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+// A synthetic VLESS + REALITY server. Every key, address and secret here is
+// made up: example.com, 127.0.0.1, keys generated for this file.
+{
+  "log": { "loglevel": "warning" },
+  "inbounds": [
+    {
+      "tag": "vless-in",
+      "listen": "0.0.0.0",
+      "port": 443,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          { "id": "b9a92990-567a-432b-b2e1-b4d5be33ca9c", "flow": "xtls-rprx-vision", "email": "alice@example.com" },
+        ],
+        "decryption": "none",
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "realitySettings": {
+          "target": "www.example.com:443",
+          "serverNames": ["www.example.com"],
+          "privateKey": "aHpnRHwJc1KPUvjwkEhZiysRkpB4qhAufH3TLDCP3l0",
+          "shortIds": ["", "cefb2b84cc71514e"],
+        },
+      },
+      "sniffing": { "enabled": true, "destOverride": "http,tls,quic" },
+    },
+  ],
+  "outbounds": [
+    { "tag": "direct", "protocol": "freedom", "settings": { "domainStrategy": "UseIPv4" } },
+    { "tag": "block", "protocol": "blackhole" },
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      // `type` is read by no release, and still written by everyone: it loads.
+      { "type": "field", "ip": ["geoip:private"], "outboundTag": "block" },
+      { "domain": "domain:ads.example.com,full:tracker.example.com", "outboundTag": "block" },
+      { "port": "53,443,1000-2000", "network": "tcp,udp", "outboundTag": "direct" },
+    ],
+  },
+}
