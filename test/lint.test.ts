@@ -8,7 +8,7 @@ const brief = (text: string, opts?: Parameters<typeof lint>[1]) =>
     lint(text, opts).map(i => `${i.severity} ${i.path.join('/')}`);
 
 describe('lint', () => {
-    it('passes the good samples on every tag, comments and trailing commas included', () => {
+    it('passes the good samples on every tag, comments included', () => {
         for (const name of ['server.jsonc', 'client.json']) {
             expect(lint(sample(name))).toEqual([]);
             for (const tag of supportedTags) expect({ tag, issues: lint(sample(name), { tag }) }).toEqual({ tag, issues: [] });
@@ -56,6 +56,14 @@ describe('lint', () => {
             .toEqual(['error 0/mux/enabled']);
         expect(lint('{ "tag": "b", "selector": "a,b" }', { mode: 'balancer' })).toEqual([]);
         expect(lint('{ "anything": 1 }', { mode: 'none' })).toEqual([]);
+    });
+
+    it('reads past a trailing comma and reports it, since Xray refuses one', () => {
+        const text = '{ "log": { "loglevel": "warning", }, "inbounds": [], }';
+        const issues = lint(text);
+        expect(issues.map(i => [i.severity, text.slice(i.from, i.to)])).toEqual([['error', ','], ['error', ',']]);
+        expect(issues.map(i => i.from)).toEqual([32, 51]);
+        expect(lint(text, { allowTrailingCommas: true })).toEqual([]);
     });
 
     it('reports a syntax error with its offset', () => {

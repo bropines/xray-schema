@@ -24,6 +24,8 @@ export interface JsoncResult {
     value: unknown;
     /** The first syntax error, if any; `value` is then undefined. */
     error?: { message: string; offset: number };
+    /** Offsets of commas before a closing `}` or `]`. */
+    trailingCommas: number[];
     /** Where the value at a path is, or undefined for a path the text does not have. */
     locate(path: Path): Span | undefined;
 }
@@ -36,6 +38,7 @@ const spanKey = (path: Path) => JSON.stringify(path);
 
 export const parseJsonc = (text: string): JsoncResult => {
     const spans = new Map<string, Span>();
+    const trailingCommas: number[] = [];
     let i = 0;
 
     const fail = (message: string, at = i): never => { throw new SyntaxProblem(message, at); };
@@ -44,7 +47,7 @@ export const parseJsonc = (text: string): JsoncResult => {
         for (;;) {
             const c = text[i];
             if (c === ' ' || c === '\t' || c === '\n' || c === '\r' || c === '﻿') { i++; continue; }
-            if (c === '/' && text[i + 1] === '/') {
+            if (c === '#' || (c === '/' && text[i + 1] === '/')) {
                 while (i < text.length && text[i] !== '\n') i++;
                 continue;
             }
@@ -101,7 +104,7 @@ export const parseJsonc = (text: string): JsoncResult => {
                 const span = spans.get(spanKey([...path, key]));
                 if (span) span.key = { from: keyFrom, to: keyTo };
                 skip();
-                if (text[i] === ',') { i++; skip(); continue; }
+                if (text[i] === ',') { const comma = i++; skip(); if (text[i] === '}') trailingCommas.push(comma); continue; }
                 if (text[i] !== '}') fail(i >= text.length ? 'unexpected end of input' : 'expected "," or "}"');
             }
             i++;
@@ -114,7 +117,7 @@ export const parseJsonc = (text: string): JsoncResult => {
                 if (i >= text.length) fail('unexpected end of input');
                 arr.push(value([...path, arr.length]));
                 skip();
-                if (text[i] === ',') { i++; skip(); continue; }
+                if (text[i] === ',') { const comma = i++; skip(); if (text[i] === ']') trailingCommas.push(comma); continue; }
                 if (text[i] !== ']') fail(i >= text.length ? 'unexpected end of input' : 'expected "," or "]"');
             }
             i++;
@@ -140,9 +143,9 @@ export const parseJsonc = (text: string): JsoncResult => {
         const result = value([]);
         skip();
         if (i < text.length) fail('unexpected text after the value');
-        return { value: result, locate };
+        return { value: result, trailingCommas, locate };
     } catch (e) {
-        if (e instanceof SyntaxProblem) return { value: undefined, error: { message: e.message, offset: e.offset }, locate };
+        if (e instanceof SyntaxProblem) return { value: undefined, error: { message: e.message, offset: e.offset }, trailingCommas, locate };
         throw e;
     }
 };

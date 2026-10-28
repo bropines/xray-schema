@@ -7,10 +7,12 @@ describe('parseJsonc', () => {
         expect(parseJsonc(text).value).toEqual(JSON.parse(text));
     });
 
-    it('takes comments and trailing commas', () => {
-        const r = parseJsonc('// head\n{ /* inline */ "a": [1, 2,], // tail\n "b": "//not a comment", }\n');
+    it('takes the comments Xray strips, and reads past trailing commas, noting each', () => {
+        const text = '// head\n{ /* inline */ "a": [1, 2,], # tail\n "b": "//not # a comment", }\n';
+        const r = parseJsonc(text);
         expect(r.error).toBeUndefined();
-        expect(r.value).toEqual({ a: [1, 2], b: '//not a comment' });
+        expect(r.value).toEqual({ a: [1, 2], b: '//not # a comment' });
+        expect(r.trailingCommas.map(o => text.slice(o, o + 2))).toEqual([',]', ', ']);
     });
 
     it('knows where each value and key is', () => {

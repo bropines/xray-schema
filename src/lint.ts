@@ -40,6 +40,11 @@ export interface LintOptions {
     mode?: LintMode;
     /** An Xray-core release tag (`v26.7.28`): keys it does not read are reported. */
     tag?: string;
+    /**
+     * Xray's loader takes comments but not trailing commas: by default each
+     * one is an error. `true` for text that a tool cleans up before Xray sees it.
+     */
+    allowTrailingCommas?: boolean;
 }
 
 export interface LintIssue {
@@ -263,8 +268,9 @@ export const lintValue = (value: unknown, opts: LintOptions = {}): Found[] => {
 };
 
 /**
- * Checks a config's text: syntax first (comments and trailing commas are
- * fine), then the schema. Each issue carries the offsets to underline.
+ * Checks a config's text: syntax first (comments are fine, trailing commas
+ * are read past and reported), then the schema. Each issue carries the
+ * offsets to underline.
  */
 export const lint = (json: string, opts: LintOptions = {}): LintIssue[] => {
     assertTag(opts.tag);
@@ -273,11 +279,15 @@ export const lint = (json: string, opts: LintOptions = {}): LintIssue[] => {
         const { message, offset } = parsed.error;
         return [{ path: [], message: `syntax: ${message}`, severity: 'error', from: offset, to: Math.min(offset + 1, json.length) }];
     }
-    return lintValue(parsed.value, opts).map(issue => {
+    const commas: LintIssue[] = opts.allowTrailingCommas ? [] : parsed.trailingCommas.map(offset => ({
+        path: [], severity: 'error', from: offset, to: offset + 1,
+        message: "syntax: a trailing comma — Xray-core's loader refuses it (comments are fine)",
+    }));
+    return [...commas, ...lintValue(parsed.value, opts).map(issue => {
         // A path zod reports may end below what the text has (a missing key): underline its parent.
         let span;
         for (let n = issue.path.length; n >= 0 && !span; n--) span = parsed.locate(issue.path.slice(0, n));
         const at = issue.severity === 'warning' && span?.key ? span.key : span;
         return at ? { ...issue, from: at.from, to: at.to } : issue;
-    });
+    })];
 };
