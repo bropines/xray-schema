@@ -8,9 +8,5 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 4
 
-[src/schemas/**.ts]
-# Ported from the Xray Config UI Editor as is, which indents schemas by two.
-indent_size = 2
-
 [*.{json,yml,yaml,md}]
 indent_size = 2

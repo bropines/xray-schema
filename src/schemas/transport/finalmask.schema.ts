@@ -1,0 +1,64 @@
+// ============================================================
+// FinalMask Schema — Source: docs/config/transports/finalmask.md
+// ============================================================
+// The union of what the supported cores decode. Which line reads which key,
+// and what each mask's settings hold, is in core/xray/versions/finalmask-rules.ts.
+import { z } from 'zod';
+import {
+  TcpMaskTypeSchema, UdpMaskTypeSchema,
+  QuicCongestionSchema, BbrProfileSchema, Int32RangeSchema,
+} from '../primitives.js';
+
+// --- TCP Mask Item ---
+export const TcpMaskItemSchema = z.object({
+  type: TcpMaskTypeSchema.optional(),
+  settings: z.record(z.string(), z.unknown()).optional(),
+}).passthrough();
+
+// --- UDP Mask Item ---
+export const UdpMaskItemSchema = z.object({
+  type: UdpMaskTypeSchema.optional(),
+  settings: z.record(z.string(), z.unknown()).optional(),
+}).passthrough();
+
+// --- UDP Hop ---
+// 26.3 and 26.7 only; 26.9 dropped it for the udphop mask. `ports` is a
+// PortList: a number or a "20000-30000,443" string.
+export const UdpHopSchema = z.object({
+  ports: z.union([z.string(), z.number()]).optional(),
+  interval: Int32RangeSchema.optional(),
+}).passthrough();
+
+// --- QUIC Params ---
+export const QuicParamsSchema = z.object({
+  congestion: QuicCongestionSchema.optional(),
+  bbrProfile: BbrProfileSchema.optional(),
+  debug: z.boolean().optional(),
+  /**
+   * Bandwidth: a string with a unit ("100 mbps"). The type is `string` in the
+   * core (v26.10.21:infra/conf/transport_method.go:704), so a bare number
+   * fails the decode.
+   */
+  brutalUp: z.string().optional(),
+  brutalDown: z.string().optional(),
+  brutalDisableLossCompensation: z.boolean().optional(),
+  udpHop: UdpHopSchema.optional(),
+  initStreamReceiveWindow: z.number().int().optional(),
+  maxStreamReceiveWindow: z.number().int().optional(),
+  initConnectionReceiveWindow: z.number().int().optional(),
+  maxConnectionReceiveWindow: z.number().int().optional(),
+  maxIdleTimeout: z.number().optional(),
+  keepAlivePeriod: z.number().optional(),
+  disablePathMTUDiscovery: z.boolean().optional(),
+  disableChromeParrot: z.boolean().optional(),
+  disableGSO: z.boolean().optional(),
+  maxIncomingStreams: z.number().int().optional(),
+  disableStatelessReset: z.boolean().optional(),
+}).passthrough();
+
+// --- FinalMask Object ---
+export const FinalMaskSchema = z.object({
+  tcp: z.array(TcpMaskItemSchema).optional(),
+  udp: z.array(UdpMaskItemSchema).optional(),
+  quicParams: QuicParamsSchema.optional(),
+}).passthrough();
