@@ -29,13 +29,12 @@
       "import": "./dist/index.js"
     },
     "./schema/*": "./schema/*",
-    "./fixtures/core-keys.json": "./fixtures/core-keys.json",
+    "./core-keys.json": "./dist/core-keys.json",
     "./package.json": "./package.json"
   },
   "files": [
     "dist",
     "schema",
-    "fixtures/core-keys.json",
     "versions.json",
     "README.md",
     "README.ru.md",
@@ -47,7 +46,7 @@
     "test": "bun test",
     "core-keys": "bun run scripts/core-keys.ts",
     "schema:build": "bun run scripts/build-json-schema.ts",
-    "prepack": "bun run build"
+    "prepack": "npm run build"
   },
   "peerDependencies": {
     "zod": "^4.4.0"
@@ -57,5 +56,8 @@
     "ajv": "8.17.1",
     "typescript": "5.9.3",
     "zod": "4.4.3"
+  },
+  "engines": {
+    "node": ">=20.10"
   }
 }
