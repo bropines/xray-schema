@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - run: bun install --frozen-lockfile
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Tests
+        run: bun test
+
+      # The fixture is read from the tags themselves. --known regenerates only
+      # the tags it already has, so a new upstream release does not fail an
+      # unrelated change; upstream.yml is what adds releases.
+      - name: Clone Xray-core
+        run: git clone --quiet https://github.com/XTLS/Xray-core.git "$RUNNER_TEMP/Xray-core"
+
+      - name: Regenerate the fixture
+        run: bun run core-keys "$RUNNER_TEMP/Xray-core" --known
+
+      - name: Regenerate the JSON Schemas
+        run: bun run schema:build
+
+      - name: Generated files are committed
+        run: |
+          if ! git diff --exit-code -- src/core-keys.json schema/; then
+            echo "::error::src/core-keys.json or schema/ is out of date — run bun run core-keys <clone> and bun run schema:build, then commit."
+            exit 1
+          fi
+          if [ -n "$(git status --porcelain -- schema/)" ]; then
+            git status --porcelain -- schema/
+            echo "::error::schema/ has files the build does not write, or misses one it does."
+            exit 1
+          fi
+
+      - name: Pack
+        run: npm pack --dry-run

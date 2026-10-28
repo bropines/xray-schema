@@ -2,7 +2,10 @@
  * What every supported core decodes from a config, key by key and tag by
  * tag — the fixture `test/coverage.test.ts` holds the zod schemas to.
  *
- *   bun run core-keys <Xray-core clone>
+ *   bun run core-keys <Xray-core clone>            every tag versions.json names
+ *   bun run core-keys <Xray-core clone> --known    only the tags the fixture has (CI:
+ *                                                  a new upstream release must not
+ *                                                  fail an unrelated change)
  *
  * Writes `src/core-keys.json`: every struct the root `Config` reaches in
  * `infra/conf` (plus the few protobuf structs a user entry is decoded into),
@@ -19,13 +22,14 @@
  * one needs a human to read what it is decoded into.
  */
 import { execFileSync, spawnSync } from 'child_process';
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { ROOT, readVersions, releaseSet, type Release } from './tags.js';
 
 const repo = process.argv[2];
-if (!repo) throw new Error('usage: bun run core-keys <Xray-core clone>');
-export const OUT = join(ROOT, 'src/core-keys.json');
+if (!repo) throw new Error('usage: bun run core-keys <Xray-core clone> [--known]');
+const OUT = join(ROOT, 'src/core-keys.json');
+const knownOnly = process.argv.includes('--known');
 
 const git = (...args: string[]) =>
     execFileSync('git', args, { cwd: repo, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
@@ -323,7 +327,11 @@ const walkTag = ({ tag, ref }: Release) => {
 };
 
 const versions = readVersions();
-const releases = releaseSet(repo, versions);
+const known = knownOnly ? (JSON.parse(readFileSync(OUT, 'utf8')) as { tags: string[] }).tags : null;
+const releases = releaseSet(repo, versions).filter(r => !known || known.includes(r.tag));
+if (known && releases.length !== known.length) {
+    throw new Error(`the clone lacks fixture tags: ${known.filter(t => !releases.some(r => r.tag === t)).join(', ')}`);
+}
 for (const release of releases) walkTag(release);
 
 if (unknownRaw.size) {
