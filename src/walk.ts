@@ -9,11 +9,11 @@
  *   cannot decode, a zod key no tag reads — what `test/coverage.test.ts`
  *   holds to its ALLOWED table;
  * - `paired`: for every zod object, the structs it stood for — which is how
- *   the JSON Schema build knows which keys a given tag reads.
+ *   the JSON Schema build and `lint()` know which keys a given tag reads.
  */
-import fixtureJson from '../src/core-keys.json' with { type: 'json' };
-import { XrayConfigSchema } from '../src/schemas/index.js';
-import { settingsSchemaFor } from '../src/schemas/settings-by-protocol.js';
+import fixtureJson from './core-keys.json' with { type: 'json' };
+import { XrayConfigSchema } from './schemas/index.js';
+import { settingsSchemaFor } from './schemas/settings-by-protocol.js';
 
 export type PerTag = string | Record<string, string>;
 export interface Fixture {
@@ -279,3 +279,7 @@ export const keysReadAt = (pairing: Pairing | undefined, shapeKeys: string[], ta
     }
     return new Set(shapeKeys.filter(k => read.has(k.toLowerCase())));
 };
+
+let cached: Map<object, Pairing> | undefined;
+/** The pairing alone, computed once: lint() asks it for every object it visits. */
+export const pairing = (): Map<object, Pairing> => (cached ??= walk().paired);
