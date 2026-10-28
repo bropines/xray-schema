@@ -1,0 +1,13 @@
+{
+  "$comment": "Which Xray-core releases the schemas are held to: every release tag from `floor` up, stable and prerelease alike, plus `extra` (`tag@commit`: a tag deleted upstream, read from that commit). The same rule xray-wasm uses. `lines` is optional grouping only — the Xray Config UI Editor's names for runs of tags, each named by the tag it reads; nothing here is checked per line.",
+  "floor": "v26.3.27",
+  "extra": ["v26.10.10@701af607"],
+  "lines": {
+    "26.3": "v26.3.27",
+    "26.7": "v26.7.28",
+    "26.9": "v26.9.9",
+    "26.9.30": "v26.9.30",
+    "26.10": "v26.10.10",
+    "26.10.21": "v26.10.21"
+  }
+}

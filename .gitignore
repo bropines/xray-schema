@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.tgz
+.DS_Store
+# A clone of Xray-core for `bun run core-keys`, if kept inside the repo.
+/Xray-core/
