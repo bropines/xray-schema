@@ -5,7 +5,6 @@ import { join } from 'path';
 import { parseJsonc, supportedTags } from '../src/index.js';
 import { keyDocs } from '../scripts/descriptions.js';
 import { buildJsonSchema } from '../scripts/json-schema.js';
-import pkg from '../package.json' with { type: 'json' };
 
 const ROOT = join(import.meta.dir, '..');
 const committed = (name: string) => JSON.parse(readFileSync(join(ROOT, 'schema', name), 'utf8'));
@@ -19,9 +18,9 @@ ajv.addKeyword('markdownDescription');
 describe('JSON Schema', () => {
 
     it('is what the build writes (run `bun run schema:build` if not)', () => {
-        expect(buildJsonSchema({ docs, version: pkg.version })).toEqual(committed('xray.schema.json'));
+        expect(buildJsonSchema({ docs })).toEqual(committed('xray.schema.json'));
         for (const tag of ['v26.3.27', 'v26.4.13', 'v26.10.21']) {
-            expect(buildJsonSchema({ tag, docs, version: pkg.version })).toEqual(committed(`${tag}.schema.json`));
+            expect(buildJsonSchema({ tag, docs })).toEqual(committed(`${tag}.schema.json`));
         }
     });
 

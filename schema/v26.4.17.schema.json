@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Xray-core v26.4.17 config",
-  "description": "The keys Xray-core v26.4.17 reads from a config (xray-schema 0.1.0). Unknown keys are allowed: the core ignores them.",
+  "description": "The keys Xray-core v26.4.17 reads from a config, from xray-schema (github.com/bropines/xray-schema). Unknown keys are allowed: the core ignores them.",
   "type": "object",
   "properties": {
     "version": {

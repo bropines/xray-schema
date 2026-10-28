@@ -58,7 +58,7 @@ const protocolsAt = (direction: Direction, tag?: string): string[] =>
  * One document. `tag` undefined: every key any supported tag reads, every
  * protocol any registers.
  */
-export const buildJsonSchema = (opts: { tag?: string; docs: Map<object, Record<string, KeyDoc>>; version: string }): Json => {
+export const buildJsonSchema = (opts: { tag?: string; docs: Map<object, Record<string, KeyDoc>> }): Json => {
     const { tag, docs } = opts;
     if (tag && !fixture.tags.includes(tag)) throw new Error(`not a supported tag: ${tag}`);
     const paired = pairing();
@@ -151,7 +151,7 @@ export const buildJsonSchema = (opts: { tag?: string; docs: Map<object, Record<s
     return {
         $schema: 'https://json-schema.org/draft/2020-12/schema',
         title: tag ? `Xray-core ${tag} config` : 'Xray-core config',
-        description: `The keys ${subject} reads from a config (xray-schema ${opts.version}). Unknown keys are allowed: the core ignores them.`,
+        description: `The keys ${subject} reads from a config, from xray-schema (github.com/bropines/xray-schema). Unknown keys are allowed: the core ignores them.`,
         ...body,
         $defs: Object.fromEntries(Object.entries(defs).sort(([a], [b]) => a.localeCompare(b)).map(([id, def]) => {
             const { id: _i, ...rest } = def as Json;

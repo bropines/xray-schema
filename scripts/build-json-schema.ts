@@ -17,14 +17,13 @@ import { ROOT } from './tags.js';
 
 const check = process.argv.includes('--check');
 const OUT = join(ROOT, 'schema');
-const { version } = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')) as { version: string };
 
 const docs = await keyDocs();
 const files: Record<string, string> = {
-    'xray.schema.json': JSON.stringify(buildJsonSchema({ docs, version }), null, 2) + '\n',
+    'xray.schema.json': JSON.stringify(buildJsonSchema({ docs }), null, 2) + '\n',
 };
 for (const tag of fixture.tags) {
-    files[`${tag}.schema.json`] = JSON.stringify(buildJsonSchema({ tag, docs, version }), null, 2) + '\n';
+    files[`${tag}.schema.json`] = JSON.stringify(buildJsonSchema({ tag, docs }), null, 2) + '\n';
 }
 
 const stale: string[] = [];
