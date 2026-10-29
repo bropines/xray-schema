@@ -12,7 +12,7 @@ Hand-written [zod](https://zod.dev) schemas for [Xray-core](https://github.com/X
 
 ## Use it
 
-> The `cdn.jsdelivr.net/gh/bropines/xray-schema@…` and npm links below go live once the repository and package are published.
+> Not on the npm registry yet: install the tarball attached to each GitHub release, or use the JSON Schema files straight from jsDelivr.
 
 There are two kinds of file in [`schema/`](schema/):
 
@@ -78,7 +78,7 @@ For completion from the JSON Schema, any JSON Schema extension works, e.g. [`cod
 ### zod
 
 ```sh
-npm install xray-schema zod   # zod 4 is a peer dependency
+npm install https://github.com/bropines/xray-schema/releases/download/v0.1.0/xray-schema-0.1.0.tgz zod   # zod 4 is a peer dependency
 ```
 
 ```ts

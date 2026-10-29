@@ -12,7 +12,7 @@
 
 ## Как использовать
 
-> Ссылки `cdn.jsdelivr.net/gh/bropines/xray-schema@…` и пакет в npm заработают после публикации репозитория и пакета.
+> В реестре npm пакета пока нет: ставьте tarball из релиза на GitHub или берите файлы JSON Schema прямо с jsDelivr.
 
 В [`schema/`](schema/) файлы двух видов:
 
@@ -78,7 +78,7 @@ const xrayLint = linter(view =>
 ### zod
 
 ```sh
-npm install xray-schema zod   # zod 4 — peer-зависимость
+npm install https://github.com/bropines/xray-schema/releases/download/v0.1.0/xray-schema-0.1.0.tgz zod   # zod 4 — peer-зависимость
 ```
 
 ```ts
