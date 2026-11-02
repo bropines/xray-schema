@@ -193,9 +193,38 @@ const RAW: Record<string, string> = {
     'SocketConfig.tcpFastOpen': 'BoolOrNumber',
     // proxyman.SniffingConfig is protobuf; VLESS refuses it on an inbound user (v26.10.21:infra/conf/vless.go:92-94).
     'vless.Reverse.sniffing': 'json.RawMessage',
+    // v26.10.31:transport/internet/splithttp/hub.go:560-565 — decoded when the
+    // XHTTP server starts listening, not in Build(), so `xray run -test` passes
+    // a value that then stops the inbound from starting.
+    'SplitHTTPConfig.h2Params': 'http.HTTP2Config',
     // A finalmask layer's settings are decoded per mask type, by code a
     // struct walk cannot follow; the zod schema types them per type instead.
     'Mask.settings': 'opaque:finalmask',
+};
+
+/**
+ * Structs from Go's standard library that a raw field is decoded into, read
+ * from the Go release the tag builds with (its go.mod). They carry no json
+ * tags: encoding/json matches a key to a field name ignoring case, so the keys
+ * are written in the camel case configs use. A time.Duration is a number of
+ * nanoseconds there, not a "30s" string.
+ */
+const STDLIB: Record<string, Record<string, string>> = {
+    // go1.27 net/http.HTTP2Config. CountError is a func: it decodes only from
+    // null, so it is left out.
+    'http.HTTP2Config': {
+        maxConcurrentStreams: 'int',
+        strictMaxConcurrentRequests: 'bool',
+        maxDecoderHeaderTableSize: 'int',
+        maxEncoderHeaderTableSize: 'int',
+        maxReadFrameSize: 'int',
+        maxReceiveBufferPerConnection: 'int',
+        maxReceiveBufferPerStream: 'int',
+        sendPingTimeout: 'int64',
+        pingTimeout: 'int64',
+        writeByteTimeout: 'int64',
+        permitProhibitedCipherSuites: 'bool',
+    },
 };
 
 /** Structs the core builds out of two decodes of one object. */
@@ -231,6 +260,7 @@ const walkTag = ({ tag, ref }: Release) => {
         parseStructs(src, null, parsed, aliases);
         parseLoaders(src, consts, loaders);
     }
+    for (const [name, fields] of Object.entries(STDLIB)) parsed[name] = { fields, embeds: [] };
     const protoPaths = Object.keys(PROTO_FILES);
     readFiles(ref, protoPaths).forEach((src, i) => parseStructs(src, PROTO_FILES[protoPaths[i]!]!, parsed, aliases));
 
