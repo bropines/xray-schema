@@ -32,6 +32,39 @@ export const XmuxSchema = z.object({
   hKeepAlivePeriod: z.number().optional(),
 }).passthrough();
 
+// --- h2Params (server, v26.10.31) ---
+//
+// Go's net/http.HTTP2Config, handed to the XHTTP server's HTTP/2 side. The core
+// decodes it only when the server starts listening
+// (v26.10.31:transport/internet/splithttp/hub.go:560-565), so `xray run -test`
+// accepts a value that then keeps the inbound from starting. Go matches the keys
+// ignoring case (the struct has no json tags), and a time.Duration is a number
+// of nanoseconds — "30s" fails. CountError is a func and decodes only from null.
+const Int64Schema = z.number().int();
+export const XhttpH2ParamsSchema = z.object({
+  /** Streams a client may have open on one connection. 0 = at least 100. */
+  maxConcurrentStreams: z.number().int().optional(),
+  /** Applies to clients (Transports) only; the server ignores it. */
+  strictMaxConcurrentRequests: z.boolean().optional(),
+  /** Below 4 MiB; 0 or invalid = the default. */
+  maxDecoderHeaderTableSize: z.number().int().optional(),
+  /** Below 4 MiB; 0 or invalid = the default. */
+  maxEncoderHeaderTableSize: z.number().int().optional(),
+  /** 16 KiB to 16 MiB; 0 or invalid = the default. */
+  maxReadFrameSize: z.number().int().optional(),
+  /** Connection flow-control window: 64 KiB to under 4 MiB, else the default. */
+  maxReceiveBufferPerConnection: z.number().int().optional(),
+  /** Stream flow-control window: under 4 MiB; 0 or invalid = the default. */
+  maxReceiveBufferPerStream: z.number().int().optional(),
+  /** Nanoseconds without a frame before a ping is sent. 0 = no health check. */
+  sendPingTimeout: Int64Schema.optional(),
+  /** Nanoseconds to wait for the ping's answer. 0 = 15 s. */
+  pingTimeout: Int64Schema.optional(),
+  /** Nanoseconds a write may stall before the connection is closed. */
+  writeByteTimeout: Int64Schema.optional(),
+  permitProhibitedCipherSuites: z.boolean().optional(),
+}).passthrough();
+
 // --- Download Settings (for upload/download separation) ---
 // A whole streamSettings object — `*StreamConfig`, the same struct as the
 // outer one (v26.10.21:infra/conf/transport_method.go), with `address` and
@@ -118,6 +151,8 @@ export const XhttpExtraSchema = z.object({
 
   /** Client: H2/H3 multiplexing. */
   xmux: XmuxSchema.optional(),
+  /** Server, v26.10.31: HTTP/2 settings; see XhttpH2ParamsSchema. */
+  h2Params: XhttpH2ParamsSchema.optional(),
   /** Client: a separate connection for the download direction; not in mode stream-one. */
   downloadSettings: XhttpDownloadSettingsSchema.optional(),
 }).passthrough();

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Xray-core config",
-  "description": "The keys Xray-core, every release from v26.3.27 to v26.10.21 reads from a config, from xray-schema (github.com/bropines/xray-schema). Unknown keys are allowed: the core ignores them.",
+  "description": "The keys Xray-core, every release from v26.3.27 to v26.10.31 reads from a config, from xray-schema (github.com/bropines/xray-schema). Unknown keys are allowed: the core ignores them.",
   "type": "object",
   "properties": {
     "env": {
@@ -5266,6 +5266,85 @@
               },
               "additionalProperties": {}
             },
+            "h2Params": {
+              "description": "Server, v26.10.31: HTTP/2 settings; see XhttpH2ParamsSchema.",
+              "markdownDescription": "Server, v26.10.31: HTTP/2 settings; see XhttpH2ParamsSchema.",
+              "type": "object",
+              "properties": {
+                "maxConcurrentStreams": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Streams a client may have open on one connection. 0 = at least 100.",
+                  "markdownDescription": "Streams a client may have open on one connection. 0 = at least 100."
+                },
+                "strictMaxConcurrentRequests": {
+                  "type": "boolean",
+                  "description": "Applies to clients (Transports) only; the server ignores it.",
+                  "markdownDescription": "Applies to clients (Transports) only; the server ignores it."
+                },
+                "maxDecoderHeaderTableSize": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Below 4 MiB; 0 or invalid = the default.",
+                  "markdownDescription": "Below 4 MiB; 0 or invalid = the default."
+                },
+                "maxEncoderHeaderTableSize": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Below 4 MiB; 0 or invalid = the default.",
+                  "markdownDescription": "Below 4 MiB; 0 or invalid = the default."
+                },
+                "maxReadFrameSize": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "16 KiB to 16 MiB; 0 or invalid = the default.",
+                  "markdownDescription": "16 KiB to 16 MiB; 0 or invalid = the default."
+                },
+                "maxReceiveBufferPerConnection": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Connection flow-control window: 64 KiB to under 4 MiB, else the default.",
+                  "markdownDescription": "Connection flow-control window: 64 KiB to under 4 MiB, else the default."
+                },
+                "maxReceiveBufferPerStream": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Stream flow-control window: under 4 MiB; 0 or invalid = the default.",
+                  "markdownDescription": "Stream flow-control window: under 4 MiB; 0 or invalid = the default."
+                },
+                "sendPingTimeout": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Nanoseconds without a frame before a ping is sent. 0 = no health check.",
+                  "markdownDescription": "Nanoseconds without a frame before a ping is sent. 0 = no health check."
+                },
+                "pingTimeout": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Nanoseconds to wait for the ping's answer. 0 = 15 s.",
+                  "markdownDescription": "Nanoseconds to wait for the ping's answer. 0 = 15 s."
+                },
+                "writeByteTimeout": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Nanoseconds a write may stall before the connection is closed.",
+                  "markdownDescription": "Nanoseconds a write may stall before the connection is closed."
+                },
+                "permitProhibitedCipherSuites": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": {}
+            },
             "downloadSettings": {
               "description": "Client: a separate connection for the download direction; not in mode stream-one.",
               "markdownDescription": "Client: a separate connection for the download direction; not in mode stream-one.",
@@ -5526,6 +5605,85 @@
                   },
                   "additionalProperties": {}
                 },
+                "h2Params": {
+                  "description": "Server, v26.10.31: HTTP/2 settings; see XhttpH2ParamsSchema.",
+                  "markdownDescription": "Server, v26.10.31: HTTP/2 settings; see XhttpH2ParamsSchema.",
+                  "type": "object",
+                  "properties": {
+                    "maxConcurrentStreams": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Streams a client may have open on one connection. 0 = at least 100.",
+                      "markdownDescription": "Streams a client may have open on one connection. 0 = at least 100."
+                    },
+                    "strictMaxConcurrentRequests": {
+                      "type": "boolean",
+                      "description": "Applies to clients (Transports) only; the server ignores it.",
+                      "markdownDescription": "Applies to clients (Transports) only; the server ignores it."
+                    },
+                    "maxDecoderHeaderTableSize": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Below 4 MiB; 0 or invalid = the default.",
+                      "markdownDescription": "Below 4 MiB; 0 or invalid = the default."
+                    },
+                    "maxEncoderHeaderTableSize": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Below 4 MiB; 0 or invalid = the default.",
+                      "markdownDescription": "Below 4 MiB; 0 or invalid = the default."
+                    },
+                    "maxReadFrameSize": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "16 KiB to 16 MiB; 0 or invalid = the default.",
+                      "markdownDescription": "16 KiB to 16 MiB; 0 or invalid = the default."
+                    },
+                    "maxReceiveBufferPerConnection": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Connection flow-control window: 64 KiB to under 4 MiB, else the default.",
+                      "markdownDescription": "Connection flow-control window: 64 KiB to under 4 MiB, else the default."
+                    },
+                    "maxReceiveBufferPerStream": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Stream flow-control window: under 4 MiB; 0 or invalid = the default.",
+                      "markdownDescription": "Stream flow-control window: under 4 MiB; 0 or invalid = the default."
+                    },
+                    "sendPingTimeout": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Nanoseconds without a frame before a ping is sent. 0 = no health check.",
+                      "markdownDescription": "Nanoseconds without a frame before a ping is sent. 0 = no health check."
+                    },
+                    "pingTimeout": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Nanoseconds to wait for the ping's answer. 0 = 15 s.",
+                      "markdownDescription": "Nanoseconds to wait for the ping's answer. 0 = 15 s."
+                    },
+                    "writeByteTimeout": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Nanoseconds a write may stall before the connection is closed.",
+                      "markdownDescription": "Nanoseconds a write may stall before the connection is closed."
+                    },
+                    "permitProhibitedCipherSuites": {
+                      "type": "boolean"
+                    }
+                  },
+                  "additionalProperties": {}
+                },
                 "downloadSettings": {
                   "description": "Client: a separate connection for the download direction; not in mode stream-one.",
                   "markdownDescription": "Client: a separate connection for the download direction; not in mode stream-one.",
@@ -5775,6 +5933,85 @@
                   "description": "H2/H3 keep-alive period in seconds. 0 = the library default.",
                   "markdownDescription": "H2/H3 keep-alive period in seconds. 0 = the library default.",
                   "type": "number"
+                }
+              },
+              "additionalProperties": {}
+            },
+            "h2Params": {
+              "description": "Server, v26.10.31: HTTP/2 settings; see XhttpH2ParamsSchema.",
+              "markdownDescription": "Server, v26.10.31: HTTP/2 settings; see XhttpH2ParamsSchema.",
+              "type": "object",
+              "properties": {
+                "maxConcurrentStreams": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Streams a client may have open on one connection. 0 = at least 100.",
+                  "markdownDescription": "Streams a client may have open on one connection. 0 = at least 100."
+                },
+                "strictMaxConcurrentRequests": {
+                  "type": "boolean",
+                  "description": "Applies to clients (Transports) only; the server ignores it.",
+                  "markdownDescription": "Applies to clients (Transports) only; the server ignores it."
+                },
+                "maxDecoderHeaderTableSize": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Below 4 MiB; 0 or invalid = the default.",
+                  "markdownDescription": "Below 4 MiB; 0 or invalid = the default."
+                },
+                "maxEncoderHeaderTableSize": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Below 4 MiB; 0 or invalid = the default.",
+                  "markdownDescription": "Below 4 MiB; 0 or invalid = the default."
+                },
+                "maxReadFrameSize": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "16 KiB to 16 MiB; 0 or invalid = the default.",
+                  "markdownDescription": "16 KiB to 16 MiB; 0 or invalid = the default."
+                },
+                "maxReceiveBufferPerConnection": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Connection flow-control window: 64 KiB to under 4 MiB, else the default.",
+                  "markdownDescription": "Connection flow-control window: 64 KiB to under 4 MiB, else the default."
+                },
+                "maxReceiveBufferPerStream": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Stream flow-control window: under 4 MiB; 0 or invalid = the default.",
+                  "markdownDescription": "Stream flow-control window: under 4 MiB; 0 or invalid = the default."
+                },
+                "sendPingTimeout": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Nanoseconds without a frame before a ping is sent. 0 = no health check.",
+                  "markdownDescription": "Nanoseconds without a frame before a ping is sent. 0 = no health check."
+                },
+                "pingTimeout": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Nanoseconds to wait for the ping's answer. 0 = 15 s.",
+                  "markdownDescription": "Nanoseconds to wait for the ping's answer. 0 = 15 s."
+                },
+                "writeByteTimeout": {
+                  "type": "integer",
+                  "minimum": -9007199254740991,
+                  "maximum": 9007199254740991,
+                  "description": "Nanoseconds a write may stall before the connection is closed.",
+                  "markdownDescription": "Nanoseconds a write may stall before the connection is closed."
+                },
+                "permitProhibitedCipherSuites": {
+                  "type": "boolean"
                 }
               },
               "additionalProperties": {}
@@ -6035,6 +6272,85 @@
                       "description": "H2/H3 keep-alive period in seconds. 0 = the library default.",
                       "markdownDescription": "H2/H3 keep-alive period in seconds. 0 = the library default.",
                       "type": "number"
+                    }
+                  },
+                  "additionalProperties": {}
+                },
+                "h2Params": {
+                  "description": "Server, v26.10.31: HTTP/2 settings; see XhttpH2ParamsSchema.",
+                  "markdownDescription": "Server, v26.10.31: HTTP/2 settings; see XhttpH2ParamsSchema.",
+                  "type": "object",
+                  "properties": {
+                    "maxConcurrentStreams": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Streams a client may have open on one connection. 0 = at least 100.",
+                      "markdownDescription": "Streams a client may have open on one connection. 0 = at least 100."
+                    },
+                    "strictMaxConcurrentRequests": {
+                      "type": "boolean",
+                      "description": "Applies to clients (Transports) only; the server ignores it.",
+                      "markdownDescription": "Applies to clients (Transports) only; the server ignores it."
+                    },
+                    "maxDecoderHeaderTableSize": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Below 4 MiB; 0 or invalid = the default.",
+                      "markdownDescription": "Below 4 MiB; 0 or invalid = the default."
+                    },
+                    "maxEncoderHeaderTableSize": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Below 4 MiB; 0 or invalid = the default.",
+                      "markdownDescription": "Below 4 MiB; 0 or invalid = the default."
+                    },
+                    "maxReadFrameSize": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "16 KiB to 16 MiB; 0 or invalid = the default.",
+                      "markdownDescription": "16 KiB to 16 MiB; 0 or invalid = the default."
+                    },
+                    "maxReceiveBufferPerConnection": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Connection flow-control window: 64 KiB to under 4 MiB, else the default.",
+                      "markdownDescription": "Connection flow-control window: 64 KiB to under 4 MiB, else the default."
+                    },
+                    "maxReceiveBufferPerStream": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Stream flow-control window: under 4 MiB; 0 or invalid = the default.",
+                      "markdownDescription": "Stream flow-control window: under 4 MiB; 0 or invalid = the default."
+                    },
+                    "sendPingTimeout": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Nanoseconds without a frame before a ping is sent. 0 = no health check.",
+                      "markdownDescription": "Nanoseconds without a frame before a ping is sent. 0 = no health check."
+                    },
+                    "pingTimeout": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Nanoseconds to wait for the ping's answer. 0 = 15 s.",
+                      "markdownDescription": "Nanoseconds to wait for the ping's answer. 0 = 15 s."
+                    },
+                    "writeByteTimeout": {
+                      "type": "integer",
+                      "minimum": -9007199254740991,
+                      "maximum": 9007199254740991,
+                      "description": "Nanoseconds a write may stall before the connection is closed.",
+                      "markdownDescription": "Nanoseconds a write may stall before the connection is closed."
+                    },
+                    "permitProhibitedCipherSuites": {
+                      "type": "boolean"
                     }
                   },
                   "additionalProperties": {}
@@ -6422,16 +6738,16 @@
             },
             "service": {
               "type": "string",
-              "description": "local, Google Drive (google-drive on v26.10.21) or template — compared exactly.",
-              "markdownDescription": "local, Google Drive (google-drive on v26.10.21) or template — compared exactly."
+              "description": "local, Google Drive (google-drive on v26.10.21), template or s3 (v26.10.31) — compared exactly.",
+              "markdownDescription": "local, Google Drive (google-drive on v26.10.21), template or s3 (v26.10.31) — compared exactly."
             },
             "secrets": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "description": "Google Drive: ClientID, ClientSecret, RefreshToken, in that order.",
-              "markdownDescription": "Google Drive: ClientID, ClientSecret, RefreshToken, in that order."
+              "description": "Google Drive: ClientID, ClientSecret, RefreshToken; s3: AccessKeyID, SecretAccessKey[, SessionToken].",
+              "markdownDescription": "Google Drive: ClientID, ClientSecret, RefreshToken; s3: AccessKeyID, SecretAccessKey[, SessionToken]."
             },
             "segmentBytes": {
               "type": "integer",
@@ -6476,6 +6792,30 @@
             "template": {
               "description": "service template: the HTTP file API, a JSON object the store decodes itself (a json.RawMessage to the loader, so any JSON passes the decode).",
               "markdownDescription": "service template: the HTTP file API, a JSON object the store decodes itself (a json.RawMessage to the loader, so any JSON passes the decode)."
+            },
+            "s3": {
+              "type": "object",
+              "properties": {
+                "endpoint": {
+                  "type": "string"
+                },
+                "region": {
+                  "type": "string",
+                  "description": "The signing region; no \"/\", \",\", spaces or tabs.",
+                  "markdownDescription": "The signing region; no \"/\", \",\", spaces or tabs."
+                },
+                "bucket": {
+                  "type": "string"
+                },
+                "pathStyle": {
+                  "type": "boolean",
+                  "description": "Path-style addressing; omitted means true.",
+                  "markdownDescription": "Path-style addressing; omitted means true."
+                }
+              },
+              "additionalProperties": {},
+              "description": "service s3 (v26.10.31); see XDriveS3Schema.",
+              "markdownDescription": "service s3 (v26.10.31); see XDriveS3Schema."
             },
             "xmux": {
               "type": "object",

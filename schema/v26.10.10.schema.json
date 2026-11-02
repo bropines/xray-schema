@@ -6235,16 +6235,16 @@
             },
             "service": {
               "type": "string",
-              "description": "local, Google Drive (google-drive on v26.10.21) or template — compared exactly.",
-              "markdownDescription": "local, Google Drive (google-drive on v26.10.21) or template — compared exactly."
+              "description": "local, Google Drive (google-drive on v26.10.21), template or s3 (v26.10.31) — compared exactly.",
+              "markdownDescription": "local, Google Drive (google-drive on v26.10.21), template or s3 (v26.10.31) — compared exactly."
             },
             "secrets": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "description": "Google Drive: ClientID, ClientSecret, RefreshToken, in that order.",
-              "markdownDescription": "Google Drive: ClientID, ClientSecret, RefreshToken, in that order."
+              "description": "Google Drive: ClientID, ClientSecret, RefreshToken; s3: AccessKeyID, SecretAccessKey[, SessionToken].",
+              "markdownDescription": "Google Drive: ClientID, ClientSecret, RefreshToken; s3: AccessKeyID, SecretAccessKey[, SessionToken]."
             },
             "segmentBytes": {
               "type": "integer",
