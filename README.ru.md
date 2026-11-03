@@ -29,7 +29,7 @@
 
 ```jsonc
 {
-  "$schema": "https://cdn.jsdelivr.net/gh/bropines/xray-schema@v0.1.0/schema/v26.10.21.schema.json",
+  "$schema": "https://cdn.jsdelivr.net/gh/bropines/xray-schema@v0.2.0/schema/v26.10.31.schema.json",
   "log": { "loglevel": "warning" }
 }
 ```
@@ -40,7 +40,7 @@
 "json.schemas": [
   {
     "fileMatch": ["**/xray/*.json", "**/xray/*.jsonc"],
-    "url": "https://cdn.jsdelivr.net/gh/bropines/xray-schema@v0.1.0/schema/xray.schema.json"
+    "url": "https://cdn.jsdelivr.net/gh/bropines/xray-schema@v0.2.0/schema/xray.schema.json"
   }
 ]
 ```
@@ -78,7 +78,7 @@ const xrayLint = linter(view =>
 ### zod
 
 ```sh
-npm install https://github.com/bropines/xray-schema/releases/download/v0.1.0/xray-schema-0.1.0.tgz zod   # zod 4 — peer-зависимость
+npm install https://github.com/bropines/xray-schema/releases/download/v0.2.0/xray-schema-0.2.0.tgz zod   # zod 4 — peer-зависимость
 ```
 
 ```ts
