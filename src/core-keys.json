@@ -17,7 +17,8 @@
     "v26.9.30",
     "v26.10.10",
     "v26.10.21",
-    "v26.10.31"
+    "v26.10.31",
+    "v26.11.9"
   ],
   "lines": {
     "26.3": "v26.3.27",
@@ -53,7 +54,8 @@
         "v26.9.30": "MasqueServerConfig",
         "v26.10.10": "MasqueServerConfig",
         "v26.10.21": "MasqueServerConfig",
-        "v26.10.31": "MasqueServerConfig"
+        "v26.10.31": "MasqueServerConfig",
+        "v26.11.9": "MasqueServerConfig"
       },
       "mixed": "SocksServerConfig",
       "shadowsocks": "ShadowsocksServerConfig",
@@ -78,7 +80,8 @@
         "v26.9.30": "MasqueClientConfig",
         "v26.10.10": "MasqueClientConfig",
         "v26.10.21": "MasqueClientConfig",
-        "v26.10.31": "MasqueClientConfig"
+        "v26.10.31": "MasqueClientConfig",
+        "v26.11.9": "MasqueClientConfig"
       },
       "shadowsocks": "ShadowsocksClientConfig",
       "socks": "SocksClientConfig",
@@ -131,7 +134,8 @@
         "v26.9.30": "ResponseConfig",
         "v26.10.10": "ResponseConfig",
         "v26.10.21": "ResponseConfig",
-        "v26.10.31": "ResponseConfig"
+        "v26.10.31": "ResponseConfig",
+        "v26.11.9": "ResponseConfig"
       }
     },
     "BridgeConfig": {
@@ -157,7 +161,8 @@
         "v26.9.30": "HealthCheckSettings",
         "v26.10.10": "HealthCheckSettings",
         "v26.10.21": "HealthCheckSettings",
-        "v26.10.31": "HealthCheckSettings"
+        "v26.10.31": "HealthCheckSettings",
+        "v26.11.9": "HealthCheckSettings"
       }
     },
     "Config": {
@@ -189,7 +194,8 @@
         "v26.9.30": "GeodataConfig",
         "v26.10.10": "GeodataConfig",
         "v26.10.21": "GeodataConfig",
-        "v26.10.31": "GeodataConfig"
+        "v26.10.31": "GeodataConfig",
+        "v26.11.9": "GeodataConfig"
       },
       "env": {
         "v26.7.11": "map[string]string",
@@ -198,7 +204,8 @@
         "v26.9.30": "map[string]string",
         "v26.10.10": "map[string]string",
         "v26.10.21": "map[string]string",
-        "v26.10.31": "map[string]string"
+        "v26.10.31": "map[string]string",
+        "v26.11.9": "map[string]string"
       }
     },
     "configLoader<inline>": {
@@ -241,7 +248,8 @@
       "script": {
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       }
     },
     "DNSOutboundConfig": {
@@ -264,7 +272,8 @@
         "v26.9.30": "[]DNSOutboundRuleConfig",
         "v26.10.10": "[]DNSOutboundRuleConfig",
         "v26.10.21": "[]DNSOutboundRuleConfig",
-        "v26.10.31": "[]DNSOutboundRuleConfig"
+        "v26.10.31": "[]DNSOutboundRuleConfig",
+        "v26.11.9": "[]DNSOutboundRuleConfig"
       },
       "rewriteNetwork": {
         "v26.5.9": "string",
@@ -277,7 +286,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "rewriteAddress": {
         "v26.5.9": "Address",
@@ -290,7 +300,8 @@
         "v26.9.30": "Address",
         "v26.10.10": "Address",
         "v26.10.21": "Address",
-        "v26.10.31": "Address"
+        "v26.10.31": "Address",
+        "v26.11.9": "Address"
       },
       "rewritePort": {
         "v26.5.9": "uint16",
@@ -303,7 +314,8 @@
         "v26.9.30": "uint16",
         "v26.10.10": "uint16",
         "v26.10.21": "uint16",
-        "v26.10.31": "uint16"
+        "v26.10.31": "uint16",
+        "v26.11.9": "uint16"
       }
     },
     "DNSOutboundRuleConfig": {
@@ -320,7 +332,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "qtype": {
         "v26.4.25": "PortList",
@@ -340,7 +353,8 @@
         "v26.9.30": "StringList",
         "v26.10.10": "StringList",
         "v26.10.21": "StringList",
-        "v26.10.31": "StringList"
+        "v26.10.31": "StringList",
+        "v26.11.9": "StringList"
       },
       "qType": {
         "v26.6.1": "PortList",
@@ -352,7 +366,8 @@
         "v26.9.30": "PortList",
         "v26.10.10": "PortList",
         "v26.10.21": "PortList",
-        "v26.10.31": "PortList"
+        "v26.10.31": "PortList",
+        "v26.11.9": "PortList"
       },
       "rCode": {
         "v26.6.1": "uint32",
@@ -364,7 +379,8 @@
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       }
     },
     "DokodemoConfig": {
@@ -385,7 +401,8 @@
         "v26.9.30": "NetworkList",
         "v26.10.10": "NetworkList",
         "v26.10.21": "NetworkList",
-        "v26.10.31": "NetworkList"
+        "v26.10.31": "NetworkList",
+        "v26.11.9": "NetworkList"
       },
       "rewriteAddress": {
         "v26.5.9": "Address",
@@ -398,7 +415,8 @@
         "v26.9.30": "Address",
         "v26.10.10": "Address",
         "v26.10.21": "Address",
-        "v26.10.31": "Address"
+        "v26.10.31": "Address",
+        "v26.11.9": "Address"
       },
       "rewritePort": {
         "v26.5.9": "uint16",
@@ -411,7 +429,8 @@
         "v26.9.30": "uint16",
         "v26.10.10": "uint16",
         "v26.10.21": "uint16",
-        "v26.10.31": "uint16"
+        "v26.10.31": "uint16",
+        "v26.11.9": "uint16"
       }
     },
     "FakeDNSConfig": {},
@@ -454,7 +473,8 @@
         "v26.9.30": "StringList",
         "v26.10.10": "StringList",
         "v26.10.21": "StringList",
-        "v26.10.31": "StringList"
+        "v26.10.31": "StringList",
+        "v26.11.9": "StringList"
       },
       "finalRules": {
         "v26.5.3": "[]FreedomFinalRuleConfig",
@@ -468,7 +488,8 @@
         "v26.9.30": "[]FreedomFinalRuleConfig",
         "v26.10.10": "[]FreedomFinalRuleConfig",
         "v26.10.21": "[]FreedomFinalRuleConfig",
-        "v26.10.31": "[]FreedomFinalRuleConfig"
+        "v26.10.31": "[]FreedomFinalRuleConfig",
+        "v26.11.9": "[]FreedomFinalRuleConfig"
       }
     },
     "FreedomFinalRuleConfig": {
@@ -484,7 +505,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "network": {
         "v26.5.3": "NetworkList",
@@ -498,7 +520,8 @@
         "v26.9.30": "NetworkList",
         "v26.10.10": "NetworkList",
         "v26.10.21": "NetworkList",
-        "v26.10.31": "NetworkList"
+        "v26.10.31": "NetworkList",
+        "v26.11.9": "NetworkList"
       },
       "port": {
         "v26.5.3": "PortList",
@@ -512,7 +535,8 @@
         "v26.9.30": "PortList",
         "v26.10.10": "PortList",
         "v26.10.21": "PortList",
-        "v26.10.31": "PortList"
+        "v26.10.31": "PortList",
+        "v26.11.9": "PortList"
       },
       "ip": {
         "v26.5.3": "StringList",
@@ -526,7 +550,8 @@
         "v26.9.30": "StringList",
         "v26.10.10": "StringList",
         "v26.10.21": "StringList",
-        "v26.10.31": "StringList"
+        "v26.10.31": "StringList",
+        "v26.11.9": "StringList"
       },
       "blockDelay": {
         "v26.5.3": "Int32Range",
@@ -540,7 +565,14 @@
         "v26.9.30": "Int32Range",
         "v26.10.10": "Int32Range",
         "v26.10.21": "Int32Range",
-        "v26.10.31": "Int32Range"
+        "v26.10.31": "Int32Range",
+        "v26.11.9": "Int32Range"
+      },
+      "delay": {
+        "v26.11.9": "Int32Range"
+      },
+      "logLevel": {
+        "v26.11.9": "string"
       }
     },
     "GeodataAssetConfig": {
@@ -557,7 +589,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "file": {
         "v26.4.25": "string",
@@ -572,7 +605,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       }
     },
     "GeodataConfig": {
@@ -589,7 +623,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "outbound": {
         "v26.4.25": "string",
@@ -604,7 +639,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "assets": {
         "v26.4.25": "[]GeodataAssetConfig",
@@ -619,7 +655,8 @@
         "v26.9.30": "[]GeodataAssetConfig",
         "v26.10.10": "[]GeodataAssetConfig",
         "v26.10.21": "[]GeodataAssetConfig",
-        "v26.10.31": "[]GeodataAssetConfig"
+        "v26.10.31": "[]GeodataAssetConfig",
+        "v26.11.9": "[]GeodataAssetConfig"
       }
     },
     "GRPCConfig": {
@@ -730,42 +767,48 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "connectivity": {
         "v26.9.9": "string",
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "interval": {
         "v26.9.9": "Duration",
         "v26.9.30": "Duration",
         "v26.10.10": "Duration",
         "v26.10.21": "Duration",
-        "v26.10.31": "Duration"
+        "v26.10.31": "Duration",
+        "v26.11.9": "Duration"
       },
       "sampling": {
         "v26.9.9": "int",
         "v26.9.30": "int",
         "v26.10.10": "int",
         "v26.10.21": "int",
-        "v26.10.31": "int"
+        "v26.10.31": "int",
+        "v26.11.9": "int"
       },
       "timeout": {
         "v26.9.9": "Duration",
         "v26.9.30": "Duration",
         "v26.10.10": "Duration",
         "v26.10.21": "Duration",
-        "v26.10.31": "Duration"
+        "v26.10.31": "Duration",
+        "v26.11.9": "Duration"
       },
       "httpMethod": {
         "v26.9.9": "string",
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       }
     },
     "HostAddress": {},
@@ -774,37 +817,48 @@
     },
     "http.HTTP2Config": {
       "maxConcurrentStreams": {
-        "v26.10.31": "int"
+        "v26.10.31": "int",
+        "v26.11.9": "int"
       },
       "strictMaxConcurrentRequests": {
-        "v26.10.31": "bool"
+        "v26.10.31": "bool",
+        "v26.11.9": "bool"
       },
       "maxDecoderHeaderTableSize": {
-        "v26.10.31": "int"
+        "v26.10.31": "int",
+        "v26.11.9": "int"
       },
       "maxEncoderHeaderTableSize": {
-        "v26.10.31": "int"
+        "v26.10.31": "int",
+        "v26.11.9": "int"
       },
       "maxReadFrameSize": {
-        "v26.10.31": "int"
+        "v26.10.31": "int",
+        "v26.11.9": "int"
       },
       "maxReceiveBufferPerConnection": {
-        "v26.10.31": "int"
+        "v26.10.31": "int",
+        "v26.11.9": "int"
       },
       "maxReceiveBufferPerStream": {
-        "v26.10.31": "int"
+        "v26.10.31": "int",
+        "v26.11.9": "int"
       },
       "sendPingTimeout": {
-        "v26.10.31": "int64"
+        "v26.10.31": "int64",
+        "v26.11.9": "int64"
       },
       "pingTimeout": {
-        "v26.10.31": "int64"
+        "v26.10.31": "int64",
+        "v26.11.9": "int64"
       },
       "writeByteTimeout": {
-        "v26.10.31": "int64"
+        "v26.10.31": "int64",
+        "v26.11.9": "int64"
       },
       "permitProhibitedCipherSuites": {
-        "v26.10.31": "bool"
+        "v26.10.31": "bool",
+        "v26.11.9": "bool"
       }
     },
     "HTTPAccount": {
@@ -841,7 +895,8 @@
         "v26.9.30": "[]HTTPAccount",
         "v26.10.10": "[]HTTPAccount",
         "v26.10.21": "[]HTTPAccount",
-        "v26.10.31": "[]HTTPAccount"
+        "v26.10.31": "[]HTTPAccount",
+        "v26.11.9": "[]HTTPAccount"
       }
     },
     "HttpUpgradeConfig": {
@@ -937,7 +992,8 @@
         "v26.9.30": "[]HysteriaUserConfig",
         "v26.10.10": "[]HysteriaUserConfig",
         "v26.10.21": "[]HysteriaUserConfig",
-        "v26.10.31": "[]HysteriaUserConfig"
+        "v26.10.31": "[]HysteriaUserConfig",
+        "v26.11.9": "[]HysteriaUserConfig"
       }
     },
     "HysteriaUserConfig": {
@@ -992,7 +1048,8 @@
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "maxSendingWindow": {
         "v26.4.13": "uint32",
@@ -1010,7 +1067,8 @@
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       }
     },
     "LimitFallback": {
@@ -1021,9 +1079,30 @@
     "LogConfig": {
       "access": "string",
       "error": "string",
-      "loglevel": "string",
+      "loglevel": {
+        "v26.3.27": "string",
+        "v26.4.13": "string",
+        "v26.4.15": "string",
+        "v26.4.17": "string",
+        "v26.4.25": "string",
+        "v26.5.3": "string",
+        "v26.5.9": "string",
+        "v26.6.1": "string",
+        "v26.6.22": "string",
+        "v26.6.27": "string",
+        "v26.7.11": "string",
+        "v26.7.28": "string",
+        "v26.9.9": "string",
+        "v26.9.30": "string",
+        "v26.10.10": "string",
+        "v26.10.21": "string",
+        "v26.10.31": "string"
+      },
       "dnsLog": "bool",
-      "maskAddress": "string"
+      "maskAddress": "string",
+      "logLevel": {
+        "v26.11.9": "string"
+      }
     },
     "LoopbackConfig": {
       "inboundTag": "string",
@@ -1036,7 +1115,8 @@
         "v26.9.30": "SniffingConfig",
         "v26.10.10": "SniffingConfig",
         "v26.10.21": "SniffingConfig",
-        "v26.10.31": "SniffingConfig"
+        "v26.10.31": "SniffingConfig",
+        "v26.11.9": "SniffingConfig"
       }
     },
     "Mask": {
@@ -1048,19 +1128,22 @@
         "v26.9.30": "Address",
         "v26.10.10": "Address",
         "v26.10.21": "Address",
-        "v26.10.31": "Address"
+        "v26.10.31": "Address",
+        "v26.11.9": "Address"
       },
       "port": {
         "v26.9.30": "uint16",
         "v26.10.10": "uint16",
         "v26.10.21": "uint16",
-        "v26.10.31": "uint16"
+        "v26.10.31": "uint16",
+        "v26.11.9": "uint16"
       },
       "remoteDNS": {
         "v26.9.30": "[]string",
         "v26.10.10": "[]string",
         "v26.10.21": "[]string",
-        "v26.10.31": "[]string"
+        "v26.10.31": "[]string",
+        "v26.11.9": "[]string"
       }
     },
     "MasqueConfig": {
@@ -1068,40 +1151,47 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "path": {
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "user": {
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "pass": {
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "headers": {
         "v26.9.30": "map[string]string",
         "v26.10.10": "map[string]string",
         "v26.10.21": "map[string]string",
-        "v26.10.31": "map[string]string"
+        "v26.10.31": "map[string]string",
+        "v26.11.9": "map[string]string"
       },
       "warp": {
         "v26.10.10": "MasqueWarpConfig",
         "v26.10.21": "MasqueWarpConfig",
-        "v26.10.31": "MasqueWarpConfig"
+        "v26.10.31": "MasqueWarpConfig",
+        "v26.11.9": "MasqueWarpConfig"
       },
       "xmux": {
         "v26.10.21": "XmuxConfig",
-        "v26.10.31": "XmuxConfig"
+        "v26.10.31": "XmuxConfig",
+        "v26.11.9": "XmuxConfig"
       }
     },
     "Masquerade": {
@@ -1118,7 +1208,8 @@
         "v26.9.30": "bool",
         "v26.10.10": "bool",
         "v26.10.21": "bool",
-        "v26.10.31": "bool"
+        "v26.10.31": "bool",
+        "v26.11.9": "bool"
       }
     },
     "MasqueServerConfig": {
@@ -1126,25 +1217,29 @@
         "v26.9.30": "[]MasqueUserConfig",
         "v26.10.10": "[]MasqueUserConfig",
         "v26.10.21": "[]MasqueUserConfig",
-        "v26.10.31": "[]MasqueUserConfig"
+        "v26.10.31": "[]MasqueUserConfig",
+        "v26.11.9": "[]MasqueUserConfig"
       },
       "clients": {
         "v26.9.30": "[]MasqueUserConfig",
         "v26.10.10": "[]MasqueUserConfig",
         "v26.10.21": "[]MasqueUserConfig",
-        "v26.10.31": "[]MasqueUserConfig"
+        "v26.10.31": "[]MasqueUserConfig",
+        "v26.11.9": "[]MasqueUserConfig"
       },
       "address": {
         "v26.9.30": "[]string",
         "v26.10.10": "[]string",
         "v26.10.21": "[]string",
-        "v26.10.31": "[]string"
+        "v26.10.31": "[]string",
+        "v26.11.9": "[]string"
       },
       "mtu": {
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       }
     },
     "MasqueUserConfig": {
@@ -1152,36 +1247,42 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "level": {
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "email": {
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       }
     },
     "MasqueWarpConfig": {
       "privateKey": {
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "publicKey": {
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "address": {
         "v26.10.10": "[]string",
         "v26.10.21": "[]string",
-        "v26.10.31": "[]string"
+        "v26.10.31": "[]string",
+        "v26.11.9": "[]string"
       }
     },
     "MetricsConfig": {
@@ -1216,7 +1317,8 @@
         "v26.9.30": "StringList",
         "v26.10.10": "StringList",
         "v26.10.21": "StringList",
-        "v26.10.31": "StringList"
+        "v26.10.31": "StringList",
+        "v26.11.9": "StringList"
       },
       "expectedIPs": "StringList",
       "expectIPs": "StringList",
@@ -1231,7 +1333,8 @@
       "id": {
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       }
     },
     "Noise": {
@@ -1269,7 +1372,8 @@
         "v26.9.30": "json.RawMessage",
         "v26.10.10": "json.RawMessage",
         "v26.10.21": "json.RawMessage",
-        "v26.10.31": "json.RawMessage"
+        "v26.10.31": "json.RawMessage",
+        "v26.11.9": "json.RawMessage"
       },
       "mux": "MuxConfig",
       "targetStrategy": "string"
@@ -1372,35 +1476,40 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "brutalDisableLossCompensation": {
         "v26.9.9": "bool",
         "v26.9.30": "bool",
         "v26.10.10": "bool",
         "v26.10.21": "bool",
-        "v26.10.31": "bool"
+        "v26.10.31": "bool",
+        "v26.11.9": "bool"
       },
       "disableChromeParrot": {
         "v26.9.9": "bool",
         "v26.9.30": "bool",
         "v26.10.10": "bool",
         "v26.10.21": "bool",
-        "v26.10.31": "bool"
+        "v26.10.31": "bool",
+        "v26.11.9": "bool"
       },
       "disableGSO": {
         "v26.9.9": "bool",
         "v26.9.30": "bool",
         "v26.10.10": "bool",
         "v26.10.21": "bool",
-        "v26.10.31": "bool"
+        "v26.10.31": "bool",
+        "v26.11.9": "bool"
       },
       "disableStatelessReset": {
         "v26.9.9": "bool",
         "v26.9.30": "bool",
         "v26.10.10": "bool",
         "v26.10.21": "bool",
-        "v26.10.31": "bool"
+        "v26.10.31": "bool",
+        "v26.11.9": "bool"
       }
     },
     "RawFieldRule": {
@@ -1429,7 +1538,8 @@
         "v26.9.30": "StringList",
         "v26.10.10": "StringList",
         "v26.10.21": "StringList",
-        "v26.10.31": "StringList"
+        "v26.10.31": "StringList",
+        "v26.11.9": "StringList"
       }
     },
     "REALITYConfig": {
@@ -1462,14 +1572,16 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "customResponseData": {
         "v26.9.9": "string",
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       }
     },
     "ReverseConfig": {
@@ -1488,7 +1600,8 @@
       "script": {
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       }
     },
     "ShadowsocksClientConfig": {
@@ -1538,7 +1651,8 @@
         "v26.9.30": "[]ShadowsocksUserConfig",
         "v26.10.10": "[]ShadowsocksUserConfig",
         "v26.10.21": "[]ShadowsocksUserConfig",
-        "v26.10.31": "[]ShadowsocksUserConfig"
+        "v26.10.31": "[]ShadowsocksUserConfig",
+        "v26.11.9": "[]ShadowsocksUserConfig"
       }
     },
     "ShadowsocksServerTarget": {
@@ -1599,7 +1713,8 @@
         "v26.9.30": "StringList",
         "v26.10.10": "StringList",
         "v26.10.21": "StringList",
-        "v26.10.31": "StringList"
+        "v26.10.31": "StringList",
+        "v26.11.9": "StringList"
       }
     },
     "SocketConfig": {
@@ -1659,7 +1774,8 @@
         "v26.9.30": "[]SocksAccount",
         "v26.10.10": "[]SocksAccount",
         "v26.10.21": "[]SocksAccount",
-        "v26.10.31": "[]SocksAccount"
+        "v26.10.31": "[]SocksAccount",
+        "v26.11.9": "[]SocksAccount"
       }
     },
     "SocksUser": {
@@ -1724,7 +1840,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "sessionIDKey": {
         "v26.6.22": "string",
@@ -1735,7 +1852,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "sessionIDTable": {
         "v26.6.22": "string",
@@ -1746,7 +1864,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "sessionIDLength": {
         "v26.6.22": "Int32Range",
@@ -1757,10 +1876,12 @@
         "v26.9.30": "Int32Range",
         "v26.10.10": "Int32Range",
         "v26.10.21": "Int32Range",
-        "v26.10.31": "Int32Range"
+        "v26.10.31": "Int32Range",
+        "v26.11.9": "Int32Range"
       },
       "h2Params": {
-        "v26.10.31": "http.HTTP2Config"
+        "v26.10.31": "http.HTTP2Config",
+        "v26.11.9": "http.HTTP2Config"
       }
     },
     "StatsConfig": {},
@@ -1800,19 +1921,22 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "masqueSettings": {
         "v26.9.30": "MasqueConfig",
         "v26.10.10": "MasqueConfig",
         "v26.10.21": "MasqueConfig",
-        "v26.10.31": "MasqueConfig"
+        "v26.10.31": "MasqueConfig",
+        "v26.11.9": "MasqueConfig"
       },
       "xdriveSettings": {
         "v26.9.30": "XDriveConfig",
         "v26.10.10": "XDriveConfig",
         "v26.10.21": "XDriveConfig",
-        "v26.10.31": "XDriveConfig"
+        "v26.10.31": "XDriveConfig",
+        "v26.11.9": "XDriveConfig"
       }
     },
     "SystemPolicy": {
@@ -1882,7 +2006,8 @@
       "useSystemCA": {
         "v26.10.10": "bool",
         "v26.10.21": "bool",
-        "v26.10.31": "bool"
+        "v26.10.31": "bool",
+        "v26.11.9": "bool"
       }
     },
     "TrojanClientConfig": {
@@ -1916,7 +2041,8 @@
         "v26.9.30": "[]TrojanUserConfig",
         "v26.10.10": "[]TrojanUserConfig",
         "v26.10.21": "[]TrojanUserConfig",
-        "v26.10.31": "[]TrojanUserConfig"
+        "v26.10.31": "[]TrojanUserConfig",
+        "v26.11.9": "[]TrojanUserConfig"
       }
     },
     "TrojanServerTarget": {
@@ -1955,7 +2081,8 @@
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "gateway": {
         "v26.4.13": "[]string",
@@ -1973,7 +2100,8 @@
         "v26.9.30": "[]string",
         "v26.10.10": "[]string",
         "v26.10.21": "[]string",
-        "v26.10.31": "[]string"
+        "v26.10.31": "[]string",
+        "v26.11.9": "[]string"
       },
       "dns": {
         "v26.4.13": "[]string",
@@ -1991,7 +2119,8 @@
         "v26.9.30": "[]string",
         "v26.10.10": "[]string",
         "v26.10.21": "[]string",
-        "v26.10.31": "[]string"
+        "v26.10.31": "[]string",
+        "v26.11.9": "[]string"
       },
       "autoSystemRoutingTable": {
         "v26.4.13": "[]string",
@@ -2009,7 +2138,8 @@
         "v26.9.30": "[]string",
         "v26.10.10": "[]string",
         "v26.10.21": "[]string",
-        "v26.10.31": "[]string"
+        "v26.10.31": "[]string",
+        "v26.11.9": "[]string"
       },
       "autoOutboundsInterface": {
         "v26.4.13": "string",
@@ -2027,7 +2157,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "desc": {
         "v26.7.28": "string",
@@ -2035,19 +2166,22 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "autoSystemDnsToGateway": {
         "v26.9.30": "bool",
         "v26.10.10": "bool",
         "v26.10.21": "bool",
-        "v26.10.31": "bool"
+        "v26.10.31": "bool",
+        "v26.11.9": "bool"
       },
       "autoSystemWfpBlockLeak": {
         "v26.9.30": "[]string",
         "v26.10.10": "[]string",
         "v26.10.21": "[]string",
-        "v26.10.31": "[]string"
+        "v26.10.31": "[]string",
+        "v26.11.9": "[]string"
       }
     },
     "UdpHop": {
@@ -2105,7 +2239,8 @@
         "v26.9.30": "[]VLessUser",
         "v26.10.10": "[]VLessUser",
         "v26.10.21": "[]VLessUser",
-        "v26.10.31": "[]VLessUser"
+        "v26.10.31": "[]VLessUser",
+        "v26.11.9": "[]VLessUser"
       }
     },
     "VLessInboundFallback": {
@@ -2169,7 +2304,8 @@
         "v26.9.30": "[]VMessUser",
         "v26.10.10": "[]VMessUser",
         "v26.10.21": "[]VMessUser",
-        "v26.10.31": "[]VMessUser"
+        "v26.10.31": "[]VMessUser",
+        "v26.11.9": "[]VMessUser"
       }
     },
     "VMessOutboundConfig": {
@@ -2244,7 +2380,8 @@
         "v26.9.30": "[]string",
         "v26.10.10": "[]string",
         "v26.10.21": "[]string",
-        "v26.10.31": "[]string"
+        "v26.10.31": "[]string",
+        "v26.11.9": "[]string"
       }
     },
     "WireGuardPeerConfig": {
@@ -2261,7 +2398,8 @@
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "email": {
         "v26.6.27": "string",
@@ -2271,7 +2409,8 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       }
     },
     "XDriveConfig": {
@@ -2279,94 +2418,112 @@
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "service": {
         "v26.9.30": "string",
         "v26.10.10": "string",
         "v26.10.21": "string",
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "secrets": {
         "v26.9.30": "[]string",
         "v26.10.10": "[]string",
         "v26.10.21": "[]string",
-        "v26.10.31": "[]string"
+        "v26.10.31": "[]string",
+        "v26.11.9": "[]string"
       },
       "segmentBytes": {
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "flushIntervalMs": {
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "pollIntervalMs": {
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "maxPollIntervalMs": {
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "sessionTtlSeconds": {
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "concurrency": {
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "eagerWindowMs": {
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "holeTimeoutMs": {
         "v26.9.30": "uint32",
         "v26.10.10": "uint32",
         "v26.10.21": "uint32",
-        "v26.10.31": "uint32"
+        "v26.10.31": "uint32",
+        "v26.11.9": "uint32"
       },
       "template": {
         "v26.9.30": "json.RawMessage",
         "v26.10.10": "json.RawMessage",
         "v26.10.21": "json.RawMessage",
-        "v26.10.31": "json.RawMessage"
+        "v26.10.31": "json.RawMessage",
+        "v26.11.9": "json.RawMessage"
       },
       "xmux": {
         "v26.10.21": "XmuxConfig",
-        "v26.10.31": "XmuxConfig"
+        "v26.10.31": "XmuxConfig",
+        "v26.11.9": "XmuxConfig"
       },
       "s3": {
-        "v26.10.31": "XDriveS3Config"
+        "v26.10.31": "XDriveS3Config",
+        "v26.11.9": "XDriveS3Config"
       }
     },
     "XDriveS3Config": {
       "endpoint": {
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "region": {
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "bucket": {
-        "v26.10.31": "string"
+        "v26.10.31": "string",
+        "v26.11.9": "string"
       },
       "pathStyle": {
-        "v26.10.31": "bool"
+        "v26.10.31": "bool",
+        "v26.11.9": "bool"
       }
     },
     "XmuxConfig": {
