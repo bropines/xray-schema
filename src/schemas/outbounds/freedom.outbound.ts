@@ -9,7 +9,22 @@ export const FreedomFinalRuleSchema = z.object({
   network: NetworkListSchema.optional(),
   port: z.union([z.number().int(), z.string()]).optional(),
   ip: StringListSchema.optional(),
-  /** Hold a blocked connection open this long before dropping it. */
+  /**
+   * Hold a blocked connection open this long before dropping it. 26.11.9+;
+   * only on `action: "block"`, any other rule with it fails the load
+   * (v26.11.9:infra/conf/freedom.go:290-295).
+   */
+  delay: Int32RangeSchema.optional(),
+  /**
+   * Severity a blocked connection is logged at: `info` (empty means it too),
+   * `debug`, `warning`, `error`, or `none`, matched ignoring case; anything else
+   * fails the load. 26.11.9+, block rules only (v26.11.9:infra/conf/freedom.go:304-318).
+   */
+  logLevel: z.string().optional(),
+  /**
+   * The old name of `delay`. Deprecated in 26.11.9, where it still loads with a
+   * warning and wins over `delay` (v26.11.9:infra/conf/freedom.go:285-288).
+   */
   blockDelay: Int32RangeSchema.optional(),
 }).passthrough();
 

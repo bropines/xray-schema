@@ -47,6 +47,22 @@ describe('lint', () => {
         expect(brief(text, { tag: 'v26.10.21' })).toEqual(['warning inbounds/0/settings/foo']);
     });
 
+    it('matches keys ignoring case, as encoding/json does, across a renamed tag', () => {
+        // v26.11.9 renamed the tag `loglevel` to `logLevel`; both spellings decode on both sides.
+        for (const key of ['loglevel', 'logLevel', 'LOGLEVEL']) {
+            for (const tag of ['v26.10.31', 'v26.11.9']) expect(brief(`{ "log": { "${key}": "warning" } }`, { tag })).toEqual([]);
+        }
+    });
+
+    it('reports a finalRules key only from the tag that added it', () => {
+        const text = '{ "outbounds": [{ "protocol": "freedom", "settings": { "finalRules": [{ "action": "block", "delay": "100-200", "logLevel": "none" }] } }] }';
+        expect(brief(text, { tag: 'v26.10.31' })).toEqual([
+            'warning outbounds/0/settings/finalRules/0/delay',
+            'warning outbounds/0/settings/finalRules/0/logLevel',
+        ]);
+        expect(brief(text, { tag: 'v26.11.9' })).toEqual([]);
+    });
+
     it('leaves a key in the schema on purpose alone, though no tag reads it', () => {
         expect(lint('{ "routing": { "rules": [{ "type": "field", "outboundTag": "direct" }] } }', { tag: 'v26.10.21' })).toEqual([]);
     });

@@ -40,8 +40,20 @@
             "error",
             "none"
           ],
-          "description": "Log level: debug, info, warning, error, none",
-          "markdownDescription": "Log level: debug, info, warning, error, none"
+          "description": "Log level: debug, info, warning, error, none. The tag is `loglevel` up to 26.10.31 and `logLevel` from 26.11.9 (v26.11.9:infra/conf/log.go:21); Go matches JSON keys ignoring case, so either spelling loads on every release.",
+          "markdownDescription": "Log level: debug, info, warning, error, none. The tag is `loglevel` up to 26.10.31 and `logLevel` from 26.11.9 (v26.11.9:infra/conf/log.go:21); Go matches JSON keys ignoring case, so either spelling loads on every release."
+        },
+        "logLevel": {
+          "type": "string",
+          "enum": [
+            "debug",
+            "info",
+            "warning",
+            "error",
+            "none"
+          ],
+          "description": "`loglevel` as 26.11.9 spells it; see there.",
+          "markdownDescription": "`loglevel` as 26.11.9 spells it; see there."
         },
         "dnsLog": {
           "type": "boolean",

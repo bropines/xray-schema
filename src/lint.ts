@@ -177,10 +177,13 @@ const lookup = (keys: Record<string, unknown>, key: string): string | undefined 
 const unreadKeys = (schema: z.ZodType, value: unknown, tag: string | undefined): Found[] => {
     const paired = pairing();
     const found: Found[] = [];
+    // Any spelling encoding/json would match counts, not only the first found:
+    // `loglevel` is a tag up to v26.10.31 and `logLevel` from v26.11.9, and both
+    // spellings decode on every release.
     const isRead = (structs: string[], key: string, at: string | undefined) => structs.some(struct => {
         const keys = fixture.structs[struct] ?? {};
-        const goKey = lookup(keys, key);
-        return goKey !== undefined && (!at || tagsOf(keys[goKey]!).includes(at));
+        const lower = key.toLowerCase();
+        return Object.keys(keys).some(goKey => goKey.toLowerCase() === lower && (!at || tagsOf(keys[goKey]!).includes(at)));
     });
 
     const visit = (s: Any, v: unknown, path: Path) => {
