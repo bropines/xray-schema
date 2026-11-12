@@ -45,6 +45,11 @@ export const TunInboundSettingsSchema = z.object({
    * Entries are lower-cased and anything but those two fails the load
    * (v26.9.30:infra/conf/tun.go:42-49, the same lines at v26.10.10); on Windows the option also needs
    * autoSystemRoutingTable, and `dns` needs dns (:54-61).
+   * 26.10.31 adds `windnsclient` and `tcp/<port>`, `udp/<port>`. 26.11.9 adds
+   * `all`, `allexceptlan`, `icmp`, bare `tcp`/`udp`, port ranges (`udp/10-20`),
+   * bare ports for both (`53`), and a CIDR in front of any of them
+   * (`1.1.1.0/24:53`, `[::/0]:all`); `all`, `allexceptlan` and port 53 then also
+   * need dns (v26.11.9:proxy/tun/wfp_leak.go:17-23, infra/conf/tun.go:54-56).
    */
   autoSystemWfpBlockLeak: z.array(z.string()).optional(),
 }).passthrough();

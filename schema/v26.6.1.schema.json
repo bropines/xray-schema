@@ -40,8 +40,20 @@
             "error",
             "none"
           ],
-          "description": "Log level: debug, info, warning, error, none",
-          "markdownDescription": "Log level: debug, info, warning, error, none"
+          "description": "Log level: debug, info, warning, error, none. The tag is `loglevel` up to 26.10.31 and `logLevel` from 26.11.9 (v26.11.9:infra/conf/log.go:21); Go matches JSON keys ignoring case, so either spelling loads on every release.",
+          "markdownDescription": "Log level: debug, info, warning, error, none. The tag is `loglevel` up to 26.10.31 and `logLevel` from 26.11.9 (v26.11.9:infra/conf/log.go:21); Go matches JSON keys ignoring case, so either spelling loads on every release."
+        },
+        "logLevel": {
+          "type": "string",
+          "enum": [
+            "debug",
+            "info",
+            "warning",
+            "error",
+            "none"
+          ],
+          "description": "`loglevel` as 26.11.9 spells it; see there.",
+          "markdownDescription": "`loglevel` as 26.11.9 spells it; see there."
         },
         "dnsLog": {
           "type": "boolean",
@@ -3105,8 +3117,8 @@
                     "type": "string"
                   }
                 ],
-                "description": "Hold a blocked connection open this long before dropping it.",
-                "markdownDescription": "Hold a blocked connection open this long before dropping it."
+                "description": "The old name of `delay`. Deprecated in 26.11.9, where it still loads with a warning and wins over `delay` (v26.11.9:infra/conf/freedom.go:285-288).",
+                "markdownDescription": "The old name of `delay`. Deprecated in 26.11.9, where it still loads with a warning and wins over `delay` (v26.11.9:infra/conf/freedom.go:285-288)."
               }
             },
             "additionalProperties": {}

@@ -51,8 +51,20 @@
             "error",
             "none"
           ],
-          "description": "Log level: debug, info, warning, error, none",
-          "markdownDescription": "Log level: debug, info, warning, error, none"
+          "description": "Log level: debug, info, warning, error, none. The tag is `loglevel` up to 26.10.31 and `logLevel` from 26.11.9 (v26.11.9:infra/conf/log.go:21); Go matches JSON keys ignoring case, so either spelling loads on every release.",
+          "markdownDescription": "Log level: debug, info, warning, error, none. The tag is `loglevel` up to 26.10.31 and `logLevel` from 26.11.9 (v26.11.9:infra/conf/log.go:21); Go matches JSON keys ignoring case, so either spelling loads on every release."
+        },
+        "logLevel": {
+          "type": "string",
+          "enum": [
+            "debug",
+            "info",
+            "warning",
+            "error",
+            "none"
+          ],
+          "description": "`loglevel` as 26.11.9 spells it; see there.",
+          "markdownDescription": "`loglevel` as 26.11.9 spells it; see there."
         },
         "dnsLog": {
           "type": "boolean",
@@ -1939,8 +1951,8 @@
           "items": {
             "type": "string"
           },
-          "description": "Windows filters that stop traffic leaking around the TUN: `dns` keeps DNS on it, `misconfigtun` an IP version no route of which leads to it. 26.9.30+. Entries are lower-cased and anything but those two fails the load (v26.9.30:infra/conf/tun.go:42-49, the same lines at v26.10.10); on Windows the option also needs autoSystemRoutingTable, and `dns` needs dns (:54-61).",
-          "markdownDescription": "Windows filters that stop traffic leaking around the TUN: `dns` keeps DNS on it, `misconfigtun` an IP version no route of which leads to it. 26.9.30+. Entries are lower-cased and anything but those two fails the load (v26.9.30:infra/conf/tun.go:42-49, the same lines at v26.10.10); on Windows the option also needs autoSystemRoutingTable, and `dns` needs dns (:54-61)."
+          "description": "Windows filters that stop traffic leaking around the TUN: `dns` keeps DNS on it, `misconfigtun` an IP version no route of which leads to it. 26.9.30+. Entries are lower-cased and anything but those two fails the load (v26.9.30:infra/conf/tun.go:42-49, the same lines at v26.10.10); on Windows the option also needs autoSystemRoutingTable, and `dns` needs dns (:54-61). 26.10.31 adds `windnsclient` and `tcp/<port>`, `udp/<port>`. 26.11.9 adds `all`, `allexceptlan`, `icmp`, bare `tcp`/`udp`, port ranges (`udp/10-20`), bare ports for both (`53`), and a CIDR in front of any of them (`1.1.1.0/24:53`, `[::/0]:all`); `all`, `allexceptlan` and port 53 then also need dns (v26.11.9:proxy/tun/wfp_leak.go:17-23, infra/conf/tun.go:54-56).",
+          "markdownDescription": "Windows filters that stop traffic leaking around the TUN: `dns` keeps DNS on it, `misconfigtun` an IP version no route of which leads to it. 26.9.30+. Entries are lower-cased and anything but those two fails the load (v26.9.30:infra/conf/tun.go:42-49, the same lines at v26.10.10); on Windows the option also needs autoSystemRoutingTable, and `dns` needs dns (:54-61). 26.10.31 adds `windnsclient` and `tcp/<port>`, `udp/<port>`. 26.11.9 adds `all`, `allexceptlan`, `icmp`, bare `tcp`/`udp`, port ranges (`udp/10-20`), bare ports for both (`53`), and a CIDR in front of any of them (`1.1.1.0/24:53`, `[::/0]:all`); `all`, `allexceptlan` and port 53 then also need dns (v26.11.9:proxy/tun/wfp_leak.go:17-23, infra/conf/tun.go:54-56)."
         }
       },
       "additionalProperties": {}
@@ -3234,6 +3246,23 @@
                   }
                 ]
               },
+              "delay": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "description": "Hold a blocked connection open this long before dropping it. 26.11.9+; only on `action: \"block\"`, any other rule with it fails the load (v26.11.9:infra/conf/freedom.go:290-295).",
+                "markdownDescription": "Hold a blocked connection open this long before dropping it. 26.11.9+; only on `action: \"block\"`, any other rule with it fails the load (v26.11.9:infra/conf/freedom.go:290-295)."
+              },
+              "logLevel": {
+                "type": "string",
+                "description": "Severity a blocked connection is logged at: `info` (empty means it too), `debug`, `warning`, `error`, or `none`, matched ignoring case; anything else fails the load. 26.11.9+, block rules only (v26.11.9:infra/conf/freedom.go:304-318).",
+                "markdownDescription": "Severity a blocked connection is logged at: `info` (empty means it too), `debug`, `warning`, `error`, or `none`, matched ignoring case; anything else fails the load. 26.11.9+, block rules only (v26.11.9:infra/conf/freedom.go:304-318)."
+              },
               "blockDelay": {
                 "anyOf": [
                   {
@@ -3243,8 +3272,8 @@
                     "type": "string"
                   }
                 ],
-                "description": "Hold a blocked connection open this long before dropping it.",
-                "markdownDescription": "Hold a blocked connection open this long before dropping it."
+                "description": "The old name of `delay`. Deprecated in 26.11.9, where it still loads with a warning and wins over `delay` (v26.11.9:infra/conf/freedom.go:285-288).",
+                "markdownDescription": "The old name of `delay`. Deprecated in 26.11.9, where it still loads with a warning and wins over `delay` (v26.11.9:infra/conf/freedom.go:285-288)."
               }
             },
             "additionalProperties": {}
