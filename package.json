@@ -1,6 +1,6 @@
 {
   "name": "xray-schema",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Hand-written zod schemas for Xray-core configs, held to what each Xray release decodes, plus JSON Schema generated from them.",
   "license": "MIT",
   "author": "Sergey Pinus (bropines)",

@@ -29,7 +29,7 @@ Put `$schema` at the top of the config. Xray ignores the key — `Config` has no
 
 ```jsonc
 {
-  "$schema": "https://cdn.jsdelivr.net/gh/bropines/xray-schema@v0.2.0/schema/v26.10.31.schema.json",
+  "$schema": "https://cdn.jsdelivr.net/gh/bropines/xray-schema@v0.3.0/schema/v26.11.9.schema.json",
   "log": { "loglevel": "warning" }
 }
 ```
@@ -40,7 +40,7 @@ Or map files to it in `settings.json`, and leave the configs alone:
 "json.schemas": [
   {
     "fileMatch": ["**/xray/*.json", "**/xray/*.jsonc"],
-    "url": "https://cdn.jsdelivr.net/gh/bropines/xray-schema@v0.2.0/schema/xray.schema.json"
+    "url": "https://cdn.jsdelivr.net/gh/bropines/xray-schema@v0.3.0/schema/xray.schema.json"
   }
 ]
 ```
@@ -78,7 +78,7 @@ For completion from the JSON Schema, any JSON Schema extension works, e.g. [`cod
 ### zod
 
 ```sh
-npm install https://github.com/bropines/xray-schema/releases/download/v0.2.0/xray-schema-0.2.0.tgz zod   # zod 4 is a peer dependency
+npm install https://github.com/bropines/xray-schema/releases/download/v0.3.0/xray-schema-0.3.0.tgz zod   # zod 4 is a peer dependency
 ```
 
 ```ts
